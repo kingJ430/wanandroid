@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">commonlib</string>
+
+    <string name="common_default_loading_message">请等待...</string>
+</resources>

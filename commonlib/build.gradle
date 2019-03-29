@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    def wanandroid = rootProject.ext.android
+    compileSdkVersion wanandroid.compileSdkVersion
+
+
+
+    defaultConfig {
+        minSdkVersion wanandroid.minSdkVersion
+        targetSdkVersion wanandroid.targetSdkVersion
+        versionCode wanandroid.versionCode
+        versionName wanandroid.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation Third_LIBRARY.appcompat
+    testImplementation Third_LIBRARY.junit
+    androidTestImplementation Third_LIBRARY.runner
+    androidTestImplementation Third_LIBRARY.espresso
+//    implementation Third_LIBRARY.material
+
+    api Third_LIBRARY.ZCommunicate_annotation
+    api Third_LIBRARY.ZCommunicate_library
+
+    api Third_LIBRARY.ZRouter_compiler
+    api Third_LIBRARY.ZRouter_annoation
+
+    api Third_LIBRARY.constraint_layout
+
+    api Third_LIBRARY.dagger_android_support
+    kapt Third_LIBRARY.dagger_android_processor
+    api Third_LIBRARY.dagger
+    kapt Third_LIBRARY.dagger_compiler
+    api Third_LIBRARY.dagger_android
+
+
+    api project(':network')
+}

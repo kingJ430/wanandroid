@@ -1,0 +1,57 @@
+ext {
+    android = [
+            compileSdkVersion    :   28,
+            minSdkVersion        :   17,
+            targetSdkVersion     :   28,
+            versionCode          :   1,
+            versionName          :   "1.0",
+            applicationId        :   "com.zjf.wanandroid"
+    ]
+
+    version = [
+            androidSupportSdkVersion      :   "28.0.0",
+            retrofitSdkVersion            :   "2.4.0",
+            kotlin_version                :   "1.3.21",
+            DAGGER_VERSION                :   "2.16"
+    ]
+
+    Third_LIBRARY = [
+            //androidX
+            appcompat               : 'androidx.appcompat:appcompat:1.0.2',
+            core_ktx                : 'androidx.core:core-ktx:1.1.0-alpha05',
+            constraintlayout        : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            runner                  : 'androidx.test:runner:1.1.0-alpha4',
+            espresso                : 'androidx.test.espresso:espresso-core:3.1.0-alpha4',
+            design                  : 'com.android.support:design:28.0.0',
+
+            junit                   : 'junit:junit:4.12',
+
+
+            kotlin                  :  "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${version.kotlin_version}",
+
+            retrofit                : "com.squareup.retrofit2:retrofit:2.5.0",
+            okhttp                  : "com.squareup.okhttp3:okhttp:3.14.0",
+            gson                    : 'com.google.code.gson:gson:2.8.5',
+            converter_gson          : 'com.squareup.retrofit2:converter-gson:2.5.0',
+            rxjava                  : "io.reactivex.rxjava2:rxjava:2.2.7",
+            adapter_rxjava2         :'com.squareup.retrofit2:adapter-rxjava2:2.5.0',
+            constraint_layout              : 'com.android.support.constraint:constraint-layout:1.1.3',
+
+            dagger                         : "com.google.dagger:dagger:${version.DAGGER_VERSION}",
+            dagger_compiler                : "com.google.dagger:dagger-compiler:${version.DAGGER_VERSION}",
+
+            dagger_android_support         : "com.google.dagger:dagger-android-support:${version.DAGGER_VERSION}",
+            dagger_android_processor       : "com.google.dagger:dagger-android-processor:${version.DAGGER_VERSION}",
+            dagger_android                 : "com.google.dagger:dagger-android:${version.DAGGER_VERSION}",
+
+
+
+            ZCommunicate_annotation            :'com.github.kingJ430.ZCommunicate:annotation:1.1',
+            ZCommunicate_compiler              :'com.github.kingJ430.ZCommunicate:compiler:1.1',
+            ZCommunicate_library               :'com.github.kingJ430.ZCommunicate:library:1.1',
+            ZRouter_compiler                   :'com.github.kingJ430.ZRouter:router-compiler:1.0',
+            ZRouter_router                     :'com.github.kingJ430.ZRouter:router:1.0',
+            ZRouter_annoation                  :'com.github.kingJ430.ZRouter:annoation:1.0'
+
+    ]
+}

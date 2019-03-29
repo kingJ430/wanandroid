@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    def wanandroid = rootProject.ext.android
+    compileSdkVersion wanandroid.compileSdkVersion
+
+
+
+    defaultConfig {
+        minSdkVersion wanandroid.minSdkVersion
+        targetSdkVersion wanandroid.targetSdkVersion
+        versionCode wanandroid.versionCode
+        versionName wanandroid.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [routerType :'Discovery']
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+
+    implementation Third_LIBRARY.appcompat
+    testImplementation Third_LIBRARY.junit
+    androidTestImplementation Third_LIBRARY.runner
+    androidTestImplementation Third_LIBRARY.espresso
+
+    implementation project(':commonlib')
+
+    kapt Third_LIBRARY.ZCommunicate_compiler
+}
