@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginStart="@dimen/dp_15"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            android:textColor="@color/color_000000"
+            tools:text="asdsafasdf"/>
+    <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="@color/color_AFAFAF"
+            android:textSize="@dimen/sp_13"
+            android:text="2019-4-9"/>
+    <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_time"
+            app:layout_constraintStart_toEndOf="@+id/tv_time"
+            android:layout_marginStart="@dimen/dp_15"
+            android:textSize="@dimen/sp_13"
+            android:textColor="@color/color_00574B"
+            android:text="zjf"/>
+    <View
+            android:id="@+id/view_line"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/px_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_time"
+            android:background="@color/color_E6E6E6"
+            android:layout_marginTop="@dimen/dp_15"
+    />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

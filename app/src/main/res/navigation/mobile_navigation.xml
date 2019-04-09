@@ -19,7 +19,7 @@
         android:id="@+id/navigation_home"
         android:name="com.zjf.main.MainFragment"
         android:label="主页"
-        tools:layout="@layout/main_fragment_layout">
+        tools:layout="@layout/main_banner_item_layout">
     </fragment>
 
     <fragment

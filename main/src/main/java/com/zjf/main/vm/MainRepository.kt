@@ -3,6 +3,7 @@ package com.zjf.main.vm
 import androidx.lifecycle.MutableLiveData
 import com.zjf.commonlib.base.vm.BaseRepository
 import com.zjf.commonlib.bean.Resource
+import com.zjf.main.bean.ArtList
 import com.zjf.main.bean.BannerBean
 import com.zjf.main.remote.MainService
 import com.zjf.network.models.RestError
@@ -33,6 +34,26 @@ class MainRepository @Inject constructor(mainService: MainService) : BaseReposit
                 }
 
                 override fun onSuccess(t: List<BannerBean>?) {
+                    liveData.value = Resource.success(t)
+                }
+
+            })
+        return liveData
+    }
+
+    fun requestArtList(pageNo:Int) : MutableLiveData<Resource<ArtList>> {
+        val liveData = MutableLiveData<Resource<ArtList>>()
+        mMainService.artList(pageNo)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : ConvertObserver<ArtList>() {
+                override fun onFailed(pRestError: RestError?) {
+                    pRestError?.let {
+                        liveData.value =  Resource.failed<ArtList>(it.msg,it.code)
+                    }
+
+                }
+
+                override fun onSuccess(t:ArtList?) {
                     liveData.value = Resource.success(t)
                 }
 

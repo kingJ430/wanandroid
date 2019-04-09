@@ -55,5 +55,10 @@ dependencies {
 
     implementation Third_LIBRARY.lifecycle_extensions
     implementation Third_LIBRARY.rxandroid
+    implementation Third_LIBRARY.BaseRecyclerViewAdapterHelper
+    implementation Third_LIBRARY.tkrefreshlayout
+
+    implementation Third_LIBRARY.paging_runtime
+    implementation Third_LIBRARY.paging_rxjava2
 
 }
