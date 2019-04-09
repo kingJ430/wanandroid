@@ -1,14 +1,22 @@
 package com.zjf.wanandroid
 
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.communicate.module.library.service.Communicate
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.zjf.commonlib.base.BaseActivity
 import com.zjf.commonlib.base.BaseFragment
 import com.zjf.main.remote.HomeFragmentService
+import com.zjf.wanandroid.databinding.ActivityMainBinding
+import com.zjf.wanandroid.vm.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private var mCurrentFragmentType = 0
 
@@ -41,32 +49,59 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
-        bnve.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.navigation_home -> {
-                    setToolbarTitle("主页")
-                    switchFragment(TYPE_FRAGMENT_MAIN)
-                }
-                R.id.navigation_tree -> {
-                    setToolbarTitle("体系")
-                    switchFragment(TYPE_FRAGMENT_SECOND)
-                }
-                R.id.navigation_navi -> {
-                    setToolbarTitle("导航")
-                    switchFragment(TYPE_FRAGMENT_THIRD)
-                }
-                R.id.navigation_todo -> {
-                    setToolbarTitle("我")
-                    switchFragment(TYPE_FRAGMENT_FOUR)
-                }
-            }
-            return@setOnNavigationItemSelectedListener true
-        }
+//        bnve.setOnNavigationItemSelectedListener {
+//            when(it.itemId) {
+//                R.id.navigation_home -> {
+//                    setToolbarTitle("主页")
+//                    switchFragment(TYPE_FRAGMENT_MAIN)
+//                }
+//                R.id.navigation_tree -> {
+//                    setToolbarTitle("体系")
+//                    switchFragment(TYPE_FRAGMENT_SECOND)
+//                }
+//                R.id.navigation_navi -> {
+//                    setToolbarTitle("导航")
+//                    switchFragment(TYPE_FRAGMENT_THIRD)
+//                }
+//                R.id.navigation_todo -> {
+//                    setToolbarTitle("我")
+//                    switchFragment(TYPE_FRAGMENT_FOUR)
+//                }
+//            }
+//            return@setOnNavigationItemSelectedListener true
+//        }
     }
 
+//    private fun setupBottomNavMenu(navController: NavController) {
+//        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+//        bottomNav?.setupWithNavController(navController)
+//    }
+
     override fun initData() {
-//        mainFragment = mCommunicate.create(HomeFragmentService::class.java).obtainMainFragment()
-//        discoveryFragment = mCommunicate.create(HomeFragmentService::class.java).obtainMainFragment()
+        val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = this
+        viewModel.onNavigationItemSelected.observe(this,
+            Observer<MenuItem> {
+                when(it.itemId) {
+                    R.id.navigation_home -> {
+                        setToolbarTitle("主页")
+                        switchFragment(TYPE_FRAGMENT_MAIN)
+                    }
+                    R.id.navigation_tree -> {
+                        setToolbarTitle("体系")
+                        switchFragment(TYPE_FRAGMENT_SECOND)
+                    }
+                    R.id.navigation_navi -> {
+                        setToolbarTitle("导航")
+                        switchFragment(TYPE_FRAGMENT_THIRD)
+                    }
+                    R.id.navigation_todo -> {
+                        setToolbarTitle("我")
+                        switchFragment(TYPE_FRAGMENT_FOUR)
+                    }
+                }
+            })
         switchFragment(TYPE_FRAGMENT_MAIN)
     }
 
@@ -111,7 +146,7 @@ class MainActivity : BaseActivity() {
                 TYPE_FRAGMENT_SECOND -> return discoveryFragment
                 TYPE_FRAGMENT_THIRD -> return naviFragment
                 TYPE_FRAGMENT_FOUR -> return mineFragment
-                else -> return null
+                else -> return MainFragment()
             }
         }
 
@@ -138,7 +173,7 @@ class MainActivity : BaseActivity() {
                 return mineFragment
             }
         }
-        return null
+        return MainFragment()
     }
 
 

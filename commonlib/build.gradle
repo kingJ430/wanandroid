@@ -7,7 +7,9 @@ android {
     def wanandroid = rootProject.ext.android
     compileSdkVersion wanandroid.compileSdkVersion
 
-
+    dataBinding {
+        enabled true
+    }
 
     defaultConfig {
         minSdkVersion wanandroid.minSdkVersion
@@ -56,6 +58,7 @@ dependencies {
     api Third_LIBRARY.dagger
     kapt Third_LIBRARY.dagger_compiler
     api Third_LIBRARY.dagger_android
+    implementation Third_LIBRARY.lifecycle_extensions
 
 
     api project(':network')

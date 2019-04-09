@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 The Android Open Source Project
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_home">
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.zjf.main.MainFragment"
+        android:label="主页"
+        tools:layout="@layout/main_fragment_layout">
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_tree"
+            android:name="com.zjf.discovery.DisCoveryFragment"
+            android:label="发现"
+            tools:layout="@layout/discovery_fragment_layout">
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_navi"
+            android:name="com.zjf.navigation.NaviFragment"
+            android:label="导航"
+            tools:layout="@layout/navi_fragment_layout">
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_todo"
+            android:name="com.zjf.user.MineFragment"
+            android:label="我的"
+            tools:layout="@layout/user_fragment_layout">
+
+    </fragment>
+
+</navigation>

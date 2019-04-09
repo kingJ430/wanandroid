@@ -16,7 +16,7 @@ public class ApiModule {
     @Provides
     @Singleton
     Retrofit provideRetrofit() {
-        return ZRest.Companion.getInstance().getRetrofit();
+        return ZRest.getInstance().getRetrofit();
     }
 
 

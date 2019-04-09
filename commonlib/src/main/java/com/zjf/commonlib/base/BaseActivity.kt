@@ -10,6 +10,8 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.Nullable
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.zjf.commonlib.R
 import com.zjf.commonlib.app.CoreApplication
 import com.zjf.commonlib.base.helper.DialogHelperImpl
@@ -23,13 +25,15 @@ import kotlinx.android.synthetic.main.common_activity_base.*
  * @Author zjf
  * @Date 2019/3/22
  */
-abstract class BaseActivity : DaggerBaseAppCompatActivity() {
+abstract class BaseActivity< V: ViewDataBinding> : DaggerBaseAppCompatActivity() {
 
     protected lateinit var mToolBar : Toolbar
     private var mUIHelper: UIHelperImpl ?= null
     private var mDialogHelper: DialogHelperImpl ?= null
     private lateinit var mContainerLayout: FrameLayout
     private lateinit var mContentView: View
+    protected lateinit var binding: V
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,10 +60,10 @@ abstract class BaseActivity : DaggerBaseAppCompatActivity() {
     }
 
 
-
     fun initBaseView() {
         setContentView(R.layout.common_activity_base)
-        mContentView = LayoutInflater.from(this).inflate(getContentLayoutId(), null, false)
+        binding = DataBindingUtil.inflate(LayoutInflater.from(this),getContentLayoutId(),null ,false)
+        mContentView = binding.root
         content_layout.addView(mContentView,
             ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         mContainerLayout = content_layout
@@ -69,7 +73,11 @@ abstract class BaseActivity : DaggerBaseAppCompatActivity() {
     abstract fun getContentLayoutId() : Int
 
     open fun initToolbar() {
+        mToolBar.setNavigationOnClickListener { onNavigationClick() }
+    }
 
+    open fun onNavigationClick() {
+        finish()
     }
 
     open fun initView() {

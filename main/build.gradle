@@ -46,4 +46,14 @@ dependencies {
 
     kapt Third_LIBRARY.ZCommunicate_compiler
 
+    implementation Third_LIBRARY.banner
+    implementation Third_LIBRARY.glide
+    kapt Third_LIBRARY.glide_compiler
+
+    kapt Third_LIBRARY.dagger_android_processor
+    kapt Third_LIBRARY.dagger_compiler
+
+    implementation Third_LIBRARY.lifecycle_extensions
+    implementation Third_LIBRARY.rxandroid
+
 }

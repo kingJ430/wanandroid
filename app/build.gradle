@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "component"
 
 android {
     def wanandroid = rootProject.ext.android
@@ -21,6 +23,11 @@ android {
             }
         }
     }
+    
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -50,10 +57,23 @@ dependencies {
     implementation project(':user')
 
     implementation Third_LIBRARY.design
+    kapt Third_LIBRARY.ZRouter_router
 
     kapt Third_LIBRARY.dagger_android_processor
     kapt Third_LIBRARY.dagger_compiler
 
     kapt Third_LIBRARY.ZCommunicate_compiler
 
+    implementation Third_LIBRARY.navigation_fragment
+    implementation Third_LIBRARY.navigation_ui
+
+    implementation Third_LIBRARY.viewmodel
+    implementation Third_LIBRARY.lifecycle_extensions
+    implementation Third_LIBRARY.agentweb
+}
+
+combuild {
+    isRegisterCompoAuto = true
+    applicationName 'com.zjf.wanandroid.app.ZApplication'
+    applicationLikeName 'com.zjf.commonlib.app.IApplicationlike'
 }

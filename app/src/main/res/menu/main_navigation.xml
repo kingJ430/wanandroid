@@ -19,6 +19,6 @@
     <item
         android:id="@+id/navigation_todo"
         android:icon="@mipmap/main_icon_todo"
-        android:title="便签" />
+        android:title="我的" />
 
 </menu>

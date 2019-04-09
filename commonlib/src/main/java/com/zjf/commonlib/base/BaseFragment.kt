@@ -41,9 +41,14 @@ abstract class BaseFragment : DaggerBaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView(view)
+        initData()
     }
 
-    protected fun initView(view: View) {
+    open fun initData() {
+
+    }
+
+    open  fun initView(view: View) {
 
     }
 
@@ -61,8 +66,8 @@ abstract class BaseFragment : DaggerBaseFragment() {
 
 
     private fun initBaseToolBar() {
-        if (this.activity is BaseActivity) {
-            this.mToolbar = (this.activity as BaseActivity).getToolbar()
+        if (this.activity is BaseActivity<*>) {
+            this.mToolbar = (this.activity as BaseActivity<*>).getToolbar()
             this.setHasOptionsMenu(true)
         }
 
